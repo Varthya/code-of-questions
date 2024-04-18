@@ -1,0 +1,28 @@
+function check(i,j,grid)
+ {
+   let n=grid.length;
+   let m=grid[0].length;
+     if(i>=0&&i<n&&j>=0&&j<m)
+     {
+        if(grid[i][j]==0)return false;
+        else return true;
+     }
+     else return false;
+ }
+var islandPerimeter = function(grid) {
+     let n=grid.length;
+     let m=grid[0].length;
+     let ans=0;
+     for(let i=0;i<n;i++) 
+     {
+        for(let j=0;j<m;j++)
+        {
+            if(grid[i][j]==0)continue;
+             if(check(i-1,j,grid)==false) ans++;
+             if(check(i+1,j,grid)==false)ans++;
+             if(check(i,j+1,grid)==false)ans++;
+             if(check(i,j-1,grid)==false) ans++;
+        }
+     }
+      return ans;
+};
