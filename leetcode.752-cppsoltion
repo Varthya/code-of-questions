@@ -1,0 +1,56 @@
+ string temp="0000";
+      if(target==temp)return 0;
+      unordered_map<string,int>mp1;
+      unordered_map<string,int>mp2;
+      for(auto s:deadends)
+      {
+        if(s==target||s==temp)return -1;
+          mp1[s]=true;
+      }
+    queue<pair<string,int>>q;
+    mp2[temp]=true;
+    q.push({temp,0});
+    int ans=INT_MAX;
+      while(q.size())
+      {
+          pair<string,int>z=q.front();
+           temp=z.first;;
+           int lev=z.second;;
+           q.pop();
+           for(int i=0;i<4;i++)
+           {
+                int zero='0';
+                int x=temp[i];
+                x=x-zero;
+                int c=x+1;
+                int ac=x-1;
+                if(c==10)c=0;
+                if(ac==-1)ac=9;
+                char a1=c+zero;
+                char a2=ac+zero;
+                string s1=temp;
+                string s2=temp;
+                s1[i]=a1;
+                s2[i]=a2;
+                if(mp1[s1]==false&&mp2[s1]==false)
+                {
+                    mp2[s1]=true;
+                    q.push({s1,lev+1});
+                    if(s1==target)
+                    {
+                        ans=min(ans,lev+1);
+                    }
+                }
+                 if(mp1[s2]==false&&mp2[s2]==false)
+                {
+                    mp2[s2]=true;
+                    q.push({s2,lev+1});
+                    if(s2==target)
+                    {
+                        ans=min(ans,lev+1);
+                    }
+                }
+           }
+      }
+      if(ans==INT_MAX)return -1;
+      return ans;
