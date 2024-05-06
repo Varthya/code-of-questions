@@ -1,0 +1,31 @@
+ ListNode rev(ListNode head)
+  {
+      ListNode curr=head;
+      ListNode prev=null;
+      ListNode next=null;
+      while(curr!=null)
+      {
+          next=curr.next;
+          curr.next=prev;
+          prev=curr;
+          curr=next;
+      }
+      return prev;
+  }
+    public ListNode removeNodes(ListNode head) {
+         ListNode z=rev(head);
+        ListNode p=z;
+        
+        while(z.next!=null)
+        {
+         if(z.val>z.next.val)
+         {
+            z.next=z.next.next;
+         }
+         else
+         {
+         z=z.next;
+         }
+        }
+        ListNode ans=rev(p);
+        return ans;
