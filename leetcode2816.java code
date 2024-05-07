@@ -1,0 +1,35 @@
+ ListNode curr=head;
+    ListNode prev=null;
+    ListNode next=null;
+      while(curr!=null)
+      {
+        next=curr.next;
+        curr.next=prev;
+        prev=curr;
+        curr=next;
+      }
+      return prev;
+
+ }
+    public ListNode doubleIt(ListNode head) {
+        
+         ListNode temp=rev(head);
+         ListNode x=temp;
+         int curr=0;
+         ListNode h=null;
+           while(temp!=null)
+           {
+            int f=temp.val*2+curr;
+            curr=f/10;
+             temp.val=f%10;
+             if(temp.next==null)h=temp;
+             temp=temp.next;
+           } 
+           ListNode p=null;
+              if(curr!=0)
+           p= new ListNode(curr);
+
+           h.next=p;
+          x= rev(x);
+          return x;
+           
