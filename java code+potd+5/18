@@ -1,0 +1,19 @@
+int n=a.size();
+        int low=0;
+        int high=n-1;
+        int ans=-1;
+        while(low<=high)
+        {
+          int mid=(low+high)/2;
+          if(mid+1<n&&a.get(mid)>a.get(mid+1))
+          {
+             ans=a.get(mid);
+             high=mid-1;
+          }
+          else
+          {
+             low=mid+1; 
+          }
+        }
+        if(ans==-1)ans=a.get(n-1);
+        return ans;
