@@ -1,0 +1,19 @@
+  let n=a.length;
+        let low=0;
+        let high=n-1;
+        let ans=-1;
+        while(low<=high)
+        {
+          let mid=Math.floor((low+high)/2);
+          if(a[mid]>a[mid+1])
+          {
+             ans=a[mid];
+             high=mid-1;
+          }
+          else
+          {
+             low=mid+1; 
+          }
+        }
+        if(ans==-1)ans=a[n-1];
+        return ans;
